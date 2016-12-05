@@ -10,20 +10,20 @@ You'll find a discussion of how to use bounce overlays to reduce your bounce rat
 Usage
 =====
 Include jQuery > 1.6 and DBP in your website with script tags that look like this:
-```
+```js
   <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
-	<script type='text/javascript' src='../../DBP-1.0.0.js'></script>
+  <script type='text/javascript' src='../../DBP-1.0.0.js'></script>
 ```
 
 Then call the new function `DBP` with an argument of what you want to do prior to detecting a bounce. 
-```
+```js
   DBP(function() {
-		alert('Please don\'t go!');
-	});
+    alert('Please don\'t go!');
+  });
 ```
 
 The DBP method takes either a function to run upon bounce as its first argument or an object with any options you wish to specify. Here's the defaults list:
-```
+```js
   const defaultOptions = {
     method: 'auto', // the method used "auto", "mouseout", "history" or "blur".
     showPerPage: 1, // the maximum number of times to trigger per page
