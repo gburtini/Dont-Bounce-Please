@@ -1,14 +1,10 @@
-// webpack.config.js
-
 var webpack = require('webpack');
 var path = require('path');
 
 var packageInfo = require("./package.json");
-
 var libraryName = packageInfo.library || packageInfo.name;
 var version = packageInfo.version;
 var minify = process.env.NODE_ENV === 'production';
-
 var outputFile = libraryName + '-' + version + (minify ? '.min' : '') + '.js';
 
 var config = {
