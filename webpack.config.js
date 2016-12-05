@@ -12,9 +12,6 @@ var minify = process.env.NODE_ENV === 'production';
 var outputFile = libraryName + '-' + version + (minify ? '.min' : '') + '.js';
 
 var config = {
-  node: {
-    fs: "empty"
-  },
   entry: __dirname + '/src/core.js',
   devtool: 'source-map',
   output: {
@@ -41,7 +38,6 @@ var config = {
         root: "$"
     }
   },
-
   resolve: {
     root: path.resolve('./src'),
     extensions: ['', '.js']
