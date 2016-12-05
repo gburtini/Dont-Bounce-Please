@@ -48,3 +48,7 @@ Example
 =======
 ![Bounce-time exit popup](http://i.imgur.com/gLeBEWQ.jpg)
 
+
+Development
+===========
+Please run eslint on any code in your pull requests. Out of the box, `npm build` will create the dist/ direcotry and `npm dev` will put Webpack in watch mode for any changes (rebuilding upon detection of a change).
