@@ -11,36 +11,48 @@ Usage
 =====
 Include jQuery > 1.6 and DBP in your website with script tags that look like this:
 ```js
-  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
-  <script type='text/javascript' src='../../DBP-1.0.0.js'></script>
+<script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
+<script type='text/javascript' src='../../DBP-1.0.0.js'></script>
 ```
 
 Then call the new function `DBP` with an argument of what you want to do prior to detecting a bounce. 
 ```js
-  DBP(function() {
-    alert('Please don\'t go!');
-  });
+DBP(function() {
+  alert('Please don\'t go!');
+});
 ```
 
 The DBP method takes either a function to run upon bounce as its first argument or an object with any options you wish to specify. Here's the defaults list:
 ```js
-  const defaultOptions = {
-    method: 'auto', // the method used "auto", "mouseout", "history" or "blur".
-    showPerPage: 1, // the maximum number of times to trigger per page
-    showPerUser: undefined, // the maximum number of times to trigger per user (cookie based)
-    cookieName: 'dbp',
+const defaultOptions = {
+  method: 'auto', // the method used "auto", "mouseout", "history" or "blur".
+  showPerPage: 1, // the maximum number of times to trigger per page
+  showPerUser: undefined, // the maximum number of times to trigger per user (cookie based)
+  cookieName: 'dbp',
 
-    // mouseout detector settings
-    distance: 100, // minimum distance from the top the user must have exited the window to trigger.
-    sensitivity: 10, // minimum distance the mouse must have moved lately to trigger.
-    scrollDelay: 500, // ms to wait after scrolling before mouseout will register.
+  // mouseout detector settings
+  distance: 100, // minimum distance from the top the user must have exited the window to trigger.
+  sensitivity: 10, // minimum distance the mouse must have moved lately to trigger.
+  scrollDelay: 500, // ms to wait after scrolling before mouseout will register.
 
-    onlySameReferrer: false, // only show if the referrer is the same domain (user has been on site)
-    notSameReferrer: false, // only show if the referrer is not the same domain (user just came in)
+  onlySameReferrer: false, // only show if the referrer is the same domain (user has been on site)
+  notSameReferrer: false, // only show if the referrer is not the same domain (user just came in)
 
-    onBounce: () => { console.log('bounce'); }, // the default onBounce handler
-  };
+  onBounce: () => { console.log('bounce'); }, // the default onBounce handler
+};
 ```
+
+For example, you could use the following to only display an exit popup once and only to users who are leaving the site straightaway (not referred from somewhere else on your domain):
+```js
+DBP({
+  showPerUser: 1,
+  notSameReferrer: true,
+  onBounce: function() {
+    alert('Please don\'t go!');
+  }
+});
+```
+
 
 By default, the method "auto" is used, which applies a mouseout detector on desktop (which checks if the user's mouse leaves the top of the screen towards the browser chrome) and a history and blur based detector on mobile (which pads the user's history and monitors for blur events on the whole page to detect leaving).
 
