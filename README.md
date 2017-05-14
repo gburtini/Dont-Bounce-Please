@@ -3,7 +3,11 @@ Don't Bounce Please
 
 A small, modern and easy to use library to detect bouncing users.
 
-Three techniques in place to capture all types of users - mobile or desktop - and display a "please don't leave" type message. As far as this author is aware, the combination of techniques applied is unique among open source implementations of bounce detectors and provides the best coverage of users' devices available. In particular, **Don't Bounce Please can detect departing mobile users on iOS and Android!**
+Unlike other solutions, **Don't Bounce Please can detect departing mobile users on iOS and Android!**
+
+We provide 3 techniques to capture all types of users - mobile or desktop - and display a "please don't leave" type message. As far as this author is aware, the combination of techniques applied is unique among open source implementations of bounce detectors and provides the best coverage of users' devices available.
+
+
 
 You'll find a discussion of how to use bounce overlays to reduce your bounce rate here: https://inbound.org/discuss/do-popup-overlays-ever-decrease-your-bounce-rate
 
