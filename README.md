@@ -1,5 +1,4 @@
-Don't Bounce Please
-===================
+# Don't Bounce Please
 
 A small, modern and easy to use library to detect bouncing users.
 
@@ -7,26 +6,27 @@ Unlike other solutions, **Don't Bounce Please can detect departing mobile users 
 
 We provide 3 techniques to capture all types of users - mobile or desktop - and display a "please don't leave" type message. As far as this author is aware, the combination of techniques applied is unique among open source implementations of bounce detectors and provides the best coverage of users' devices available.
 
-
-
 You'll find a discussion of how to use bounce overlays to reduce your bounce rate here: https://inbound.org/discuss/do-popup-overlays-ever-decrease-your-bounce-rate
 
-Usage
-=====
+# Usage
+
 Include jQuery > 1.6 and DBP in your website with script tags that look like this:
+
 ```js
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
 <script type='text/javascript' src='../../DBP-1.0.0.js'></script>
 ```
 
-Then call the new function `DBP` with an argument of what you want to do prior to detecting a bounce. 
+Then call the new function `DBP` with an argument of what you want to do prior to detecting a bounce.
+
 ```js
 DBP(function() {
-  alert('Please don\'t go!');
+  alert("Please don't go!");
 });
 ```
 
 The DBP method takes either a function to run upon bounce as its first argument or an object with any options you wish to specify. Here's the defaults list:
+
 ```js
 const defaultOptions = {
   method: 'auto', // the method used "auto", "mouseout", "history" or "blur".
@@ -42,29 +42,30 @@ const defaultOptions = {
   onlySameReferrer: false, // only show if the referrer is the same domain (user has been on site)
   notSameReferrer: false, // only show if the referrer is not the same domain (user just came in)
 
-  onBounce: () => { console.log('bounce'); }, // the default onBounce handler
+  onBounce: () => {
+    console.log('bounce');
+  }, // the default onBounce handler
 };
 ```
 
 For example, you could use the following to only display an exit popup once and only to users who are leaving the site straightaway (not referred from somewhere else on your domain):
+
 ```js
 DBP({
   showPerUser: 1,
   notSameReferrer: true,
   onBounce: function() {
-    alert('Please don\'t go!');
-  }
+    alert("Please don't go!");
+  },
 });
 ```
 
-
 By default, the method "auto" is used, which applies a mouseout detector on desktop (which checks if the user's mouse leaves the top of the screen towards the browser chrome) and a history and blur based detector on mobile (which pads the user's history and monitors for blur events on the whole page to detect leaving).
 
-Example
-=======
+# Example
+
 ![Bounce-time exit popup](http://i.imgur.com/gLeBEWQ.jpg)
 
+# Development
 
-Development
-===========
 Please run eslint on any code in your pull requests. Out of the box, `npm build` will create the dist/ direcotry and `npm dev` will put Webpack in watch mode for any changes (rebuilding upon detection of a change).

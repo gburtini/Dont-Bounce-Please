@@ -1,13 +1,14 @@
-var webpack = require('webpack');
-var path = require('path');
+const webpack = require('webpack');
+const path = require('path');
 
-var packageInfo = require("./package.json");
-var libraryName = packageInfo.library || packageInfo.name;
-var version = packageInfo.version;
-var minify = process.env.NODE_ENV === 'production';
-var outputFile = libraryName + '-' + version + (minify ? '.min' : '') + '.js';
+const packageInfo = require('./package.json');
+const libraryName = packageInfo.library || packageInfo.name;
+const version = packageInfo.version;
+const minify = process.env.NODE_ENV === 'production';
+const fileExtension = minify ? '.min.js' : '.js';
+const outputFile = `${libraryName}-${version}${fileExtension}`;
 
-var config = {
+const config = {
   entry: __dirname + '/src/core.js',
   devtool: 'source-map',
   output: {
@@ -15,34 +16,36 @@ var config = {
     filename: outputFile,
     library: libraryName,
     libraryTarget: 'umd',
-    umdNamedDefine: true
+    umdNamedDefine: true,
   },
   module: {
     loaders: [
       {
         test: /(\.jsx|\.js)$/,
         loader: 'babel',
-        exclude: /(node_modules|bower_components)/
-      }
-    ]
+        exclude: /(node_modules|bower_components)/,
+      },
+    ],
   },
   externals: {
-    "jquery": {
-        commonjs: "jquery",
-        commonjs2: "jquery",
-        amd: "jquery",
-        root: "$"
-    }
+    jquery: {
+      commonjs: 'jquery',
+      commonjs2: 'jquery',
+      amd: 'jquery',
+      root: '$',
+    },
   },
   resolve: {
     root: path.resolve('./src'),
-    extensions: ['', '.js']
+    extensions: ['', '.js'],
   },
-  plugins: minify ? [
-    new webpack.optimize.UglifyJsPlugin({
-      compress: { warnings: false }
-    })
-  ] : []
+  plugins: minify
+    ? [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false },
+      }),
+    ]
+    : [],
 };
 
 module.exports = config;

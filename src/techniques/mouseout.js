@@ -9,7 +9,7 @@ function create(root, document, variables) {
   let movements = Array(NUMBER_OF_MOVEMENTS).fill({ x: 0, y: 0 });
   let scrolling = false;
 
-  $(document).mousemove((event) => {
+  $(document).mousemove(event => {
     // track the movements.
     movements.unshift({
       x: event.clientX,
@@ -19,7 +19,7 @@ function create(root, document, variables) {
     movements = movements.slice(0, NUMBER_OF_MOVEMENTS);
   });
 
-  $(document).mouseout((event) => {
+  $(document).mouseout(event => {
     logger(+new Date(), 'mouseout: mouseout event fired, scrolling:', scrolling);
 
     if (!scrolling) {
