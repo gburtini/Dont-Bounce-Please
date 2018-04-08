@@ -19,10 +19,10 @@ const config = {
     umdNamedDefine: true,
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /(\.jsx|\.js)$/,
-        loader: 'babel',
+        loader: 'babel-loader',
         exclude: /(node_modules|bower_components)/,
       },
     ],
@@ -36,8 +36,7 @@ const config = {
     },
   },
   resolve: {
-    root: path.resolve('./src'),
-    extensions: ['', '.js'],
+    extensions: ['.js'],
   },
   plugins: minify
     ? [

@@ -14,7 +14,7 @@ Include jQuery > 1.6 and DBP in your website with script tags that look like thi
 
 ```js
 <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js'></script>
-<script type='text/javascript' src='../../DBP-1.0.0.js'></script>
+<script type='text/javascript' src='../../DBP-1.0.1.js'></script>
 ```
 
 Then call the new function `DBP` with an argument of what you want to do prior to detecting a bounce.
