@@ -6,8 +6,13 @@ const Cookie = require('js-cookie');
  * knownMobile, if specified, overrules our mobile check.
  */
 function initialize(options, knownMobile = undefined) {
-  const userOptions = (typeof options === 'function') ? { onBounce: options } : options;
-  const isMobile = (knownMobile !== undefined) ? knownMobile : /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(window.navigator.userAgent);
+  const userOptions = typeof options === 'function' ? { onBounce: options } : options;
+  const isMobile =
+    knownMobile !== undefined
+      ? knownMobile
+      : /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+          window.navigator.userAgent
+        );
   const state = {
     disabled: false,
     count: 0,
@@ -16,7 +21,7 @@ function initialize(options, knownMobile = undefined) {
   function getDefaultedOptions() {
     const defaultOptions = {
       method: 'auto', // the method used "auto", "mouseout", "history" or "blur".
-      showPerPage: 1, // the maximum number of times to trigger per page
+      showPerPage: 1, // the maximum number of times to trigger per page (or false to disable)
       showPerUser: undefined, // the maximum number of times to trigger per user (cookie based)
       cookieName: 'dbp',
 
@@ -28,7 +33,9 @@ function initialize(options, knownMobile = undefined) {
       onlySameReferrer: false, // only show if the referrer is the same domain (user has been on site)
       notSameReferrer: false, // only show if the referrer is not the same domain (user just came in)
 
-      onBounce: () => { console.log('bounce'); }, // The default onBounce handler
+      onBounce: () => {
+        console.log('bounce');
+      }, // The default onBounce handler
     };
 
     const variables = Object.assign({}, defaultOptions, userOptions);
@@ -46,7 +53,6 @@ function initialize(options, knownMobile = undefined) {
       function incrementUserCount() {
         Cookie.set(variables.cookieName, readUserCount() + 1);
       }
-
 
       return (...args) => {
         if (variables.onlySameReferrer && checkReferrer()) return;
@@ -75,12 +81,13 @@ function initialize(options, knownMobile = undefined) {
   const args = getCreationArguments(variables);
 
   let appliedTechniques = [];
-  if (variables.method === 'auto') appliedTechniques = isMobile ? ['blur', 'history'] : ['mouseout'];
+  if (variables.method === 'auto')
+    appliedTechniques = isMobile ? ['blur', 'history'] : ['mouseout'];
   else appliedTechniques = Array.isArray(variables.method) ? variables.method : [variables.method];
 
-  appliedTechniques.forEach((technique => {
+  appliedTechniques.forEach(technique => {
     techniques[technique].create(...args);
-  }));
+  });
 
   return {
     disable: () => {

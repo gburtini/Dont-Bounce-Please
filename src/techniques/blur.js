@@ -2,7 +2,7 @@ const logger = require('../logger');
 // eslint-disable-next-line id-length
 const $ = require('jquery');
 
- // how freqeutly to check if something blurrable has focus
+// how frequently to check if something blurable has focus
 const REFOCUS_INTERVAL = 1000;
 
 // how long after click to wait to allow blur events again.
