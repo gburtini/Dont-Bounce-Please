@@ -1,7 +1,7 @@
 {
   "name": "dont-bounce-please",
   "library": "DBP",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description":
     "Allows programmer-specified behavior upon detection of a likely bounce. Exposes a single method `DBP` which can take in a options object or a method to be run upon bounce.",
   "scripts": {
@@ -11,7 +11,11 @@
   },
   "author": "Giuseppe Burtini",
   "license": "MIT",
-  "index": "./src/core.js",
+  "main": "./src/core.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/gburtini/Dont-Bounce-Please.git"
+  },
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
