@@ -58,8 +58,8 @@ function initialize(options, knownMobile = undefined) {
         if (variables.onlySameReferrer && checkReferrer()) return;
         if (variables.notSameReferrer && !checkReferrer()) return;
 
-        if (variables.showPerPage && state.count > variables.showPerPage) return;
-        if (variables.showPerUser && readUserCount() > variables.showPerUser) return;
+        if (variables.showPerPage && state.count >= variables.showPerPage) return;
+        if (variables.showPerUser && readUserCount() >= variables.showPerUser) return;
 
         if (state.disabled) return;
 
