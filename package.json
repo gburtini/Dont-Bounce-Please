@@ -2,8 +2,7 @@
   "name": "dont-bounce-please",
   "library": "DBP",
   "version": "1.0.3",
-  "description":
-    "Allows programmer-specified behavior upon detection of a likely bounce. Exposes a single method `DBP` which can take in a options object or a method to be run upon bounce.",
+  "description": "Allows programmer-specified behavior upon detection of a likely bounce. Exposes a single method `DBP` which can take in a options object or a method to be run upon bounce.",
   "scripts": {
     "build": "WEBPACK_ENV=build webpack",
     "dev": "WEBPACK_ENV=dev webpack --progress --colors --watch",
